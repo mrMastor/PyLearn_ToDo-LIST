@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  {% block title %}<title>СПИСОК ДЕЛ!</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Добавление дополнительного статического CSS файла -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<style>
+  .btn-group button {
+      background-color: #4CAF50; /* Green background */
+      border: 1px solid green; /* Green border */
+      color: white; /* White text */
+      padding: 2px 5px; /* Some padding */
+      cursor: pointer; /* Pointer/hand icon */
+      float: left; /* Float the buttons side by side */
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+      content: "";
+      clear: both;
+      display: table;
+  }
+  
+  .btn-group button:not(:last-child) {
+      border-right: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+      background-color: #3e8e41;
+  }
+  </style>
+<body>
+
+  <div class="container-fluid">
+    
+    <div class="row">
+      <div class="col-sm-2">
+
+      {% block sidebar %}
+      <ul class="sidebar-nav">
+        {% block breadcrumbs %}
+          <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}"><u>ADMIN PANEL</u></a>
+            {% if title %} &rsaquo; {{ title }}{% endif %}
+          </div>
+        {% endblock %}
+          <br><br><br>
+          <li><a href="{% url 'index' %}"><strong><u>Домой</u></strong></a></li>
+          <li><a href="{% url 'add_item' %}"><em><u>Добавить задачу</u></em></a></li>
+          <li><a href="{% url 'full_list' %}"><em><u>Все дела</u></em></a></li>
+          <li><a href="{% url 'list_false' %}"><em><u>Все незавершенные дела</u></em></a></li>
+      </ul>
+     {% endblock %}
+      </div>
+      <div class="col-sm-10 ">
+      {% block content %}{% endblock %}
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

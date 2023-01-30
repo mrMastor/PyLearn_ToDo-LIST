@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1><strong><font size="10" color="BLUE">{{ item_detail.name }}</font></strong></h1>
+  <div class="item mb-4">
+    <div class="item-body">
+      <pre><strong>Стаус выполнения:</strong> {{ item_detail.status }} </pre>
+      <pre><strong>Дата создания:</strong> {{ item_detail.date_create }} </pre>
+      <pre><strong>Дата выполнения:</strong> {{ item_detail.date_complite }} </pre>
+      <pre><strong>URL Post:</strong> {{ item_detail.slug }} </pre>
+    </div>
+  </div>
+  <br>
+  <form action="{% url 'item_update' item_detail.slug %}"><button>РЕДАКТИРОВАТЬ</button></form>
+  <br>
+  <form action="{% url 'item_delete' item_detail.slug  %}"><button>УДАЛИТЬ</button></form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Список всех дел:</h1>
+
+    {% if full_lists %}
+    <ul>
+      
+      {% for item in full_lists %}
+        
+        {% if item.status == False %}
+          <div class="item mb-4">
+            <div class="item-body">
+                <pre>{{ item.pk }}   <a href=" {{ item.get_absolute_url }}"><font color="#FF0000">{{ item.name }}</font></a></pre>
+            </div>
+          </div>
+        {% else %}
+          <div class="item mb-4">
+            <div class="item-body">
+                <pre>{{ item.pk }}   <a href=" {{ item.get_absolute_url }}"><font color="#32CD32">{{ item.name }}</font></a></pre>
+            </div>
+          </div>
+        {% endif %}
+      
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>В списке нет дел =(</p>
+    {% endif %}
+{% endblock %}

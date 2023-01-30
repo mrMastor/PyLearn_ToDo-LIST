@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+    <h1>Удаление задачи: {{ item_delete.name }}</h1>
+    <ul>
+        <div class="item mb-4">
+            <div class="item-body">
+                <form action="" method="post">{% csrf_token %}
+                    <p>Вы точно хотите удалить задачу "{{ item_delete.name }}"?</p>
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
+    </ul>
+{% endblock content %}

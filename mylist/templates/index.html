@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1><strong>TO DO LIST!</strong></h1>
+<h2>Состояние дел:</h2>
+  <div class="item mb-4">
+    <div class="item-body">
+      <pre><strong>Всего дел:</strong> <a href="{% url 'full_list' %}"><font size="5" color="#00FF00">{{ count_item }}</font></a></pre>
+      <pre><strong>Всего незавершенных дел:</strong><a href="{% url 'list_false' %}"><font size="5" color="#FF0000">{{ count_item_false }}</font></a></pre>
+
+    </div>
+  </div>
+{% endblock %}

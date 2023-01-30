@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h1>Редактирование задачи: {{ item_update.name }}</h1>
+  <ul>
+      <div class="item mb-4">
+          <div class="item-body">
+              <form action="" method="post">{% csrf_token %}
+                  {{ form.as_p }}
+                  <input type="submit" value="Update">
+              </form>
+          </div>
+      </div>
+  </ul>
+{% endblock %}
